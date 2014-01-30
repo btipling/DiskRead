@@ -11,9 +11,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
 /**
@@ -42,14 +39,21 @@ public class ReadCurrentFile extends AnAction {
         }
         final String contents;
         try {
-            contents = new String(Files.readAllBytes(Paths.get(virtualFile.getPath())), StandardCharsets.UTF_8);
+            BufferedReader br = new BufferedReader(new FileReader(virtualFile.getPath()));
+            String currentLine;
+            StringBuilder stringBuilder = new StringBuilder();
+            while ((currentLine = br.readLine()) != null) {
+                stringBuilder.append(currentLine);
+                stringBuilder.append("\n");
+            }
+            contents = stringBuilder.toString();
         } catch (IOException e1) {
             return;
         }
         final Runnable readRunner = new Runnable() {
             @Override
             public void run() {
-                document.setText(NEW_LINE.matcher(contents).replaceAll("\n"));
+                document.setText(contents);
             }
         };
         ApplicationManager.getApplication().invokeLater(new Runnable() {
