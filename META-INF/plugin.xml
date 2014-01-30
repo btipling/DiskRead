@@ -1,17 +1,15 @@
 <idea-plugin version="2">
-  <id>com.yourcompany.unique.plugin.id</id>
-  <name>Plugin display name here</name>
+  <id>com.bjorn.tipling.plugin.diskread</id>
+  <name>DiskReade</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <vendor email="bjorn@ambientchill.com.com" url="http://bjorn.tipling.com">Bjorn Tipling</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      Force files to be read from disk. This plugin will force a file to be reverted to its last save state.
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      Created plugin.
     ]]>
   </change-notes>
 
